@@ -41,7 +41,7 @@ src_install() {
 	dobin bspwm bspc
 	dodoc LICENSE
 
-	doman {bspwm,bspc}.1
+	doman bspwm.1
 	
 	newbashcomp bash_completion bspc
 
