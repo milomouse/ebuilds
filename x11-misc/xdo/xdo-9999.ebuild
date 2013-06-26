@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+RESTRICT="strip"
+
 RDEPEND=">=x11-libs/libxcb-1.9
 	x11-libs/xcb-util-wm"
 DEPEND="virtual/pkgconfig"
@@ -23,6 +25,8 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX=/usr DESTDIR="${D}" install
-	install -D -m644 LICENSE "${D}/usr/share/licenses/xdo/LICENSE"
+	dobin ${PN}
+	dodoc LICENSE
+
+	doman ${PN}.1
 }

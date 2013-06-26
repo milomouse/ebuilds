@@ -12,10 +12,11 @@ EGIT_REPO_URI="git://github.com/TrilbyWhite/interrobang.git"
 LICENSE="GPL3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="bash-completion"
+IUSE="examples"
 
-DEPEND="x11-libs/libX11
-	bash-completion? ( app-shells/bash-completion )"
+RESTRICT="strip"
+
+DEPEND="x11-libs/libX11"
 RDEPEND="${DEPEND}
 	virtual/pkgconfig"
 
@@ -24,5 +25,12 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX=/usr DESTDIR="${D}" install
+	dobin ${PN}
+	dodoc COPYING
+
+	if use examples ; then
+		exeinto /usr/share/doc/${PF}/examples
+		doexe interrobangrc
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }

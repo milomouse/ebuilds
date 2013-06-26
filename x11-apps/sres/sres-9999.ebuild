@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+RESTRICT="strip"
+
 RDEPEND=">=x11-libs/libxcb-1.9"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -23,6 +25,6 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX=/usr DESTDIR="${D}" install
-	install -D -m644 LICENSE "${D}/usr/share/licenses/sres/LICENSE"
+	dobin ${PN}
+	dodoc LICENSE
 }
