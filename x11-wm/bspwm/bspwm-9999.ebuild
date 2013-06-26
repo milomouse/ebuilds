@@ -50,6 +50,12 @@ src_install() {
 		doexe examples/{autostart,sxhkdrc}
 		exeinto /usr/share/doc/${PF}/examples/panel
 		doexe examples/panel/*
+		exeinto /usr/share/doc/${PF}/examples/loop
+		doexe examples/loop/*
+		exeinto /usr/share/doc/${PF}/examples/misc
+		doexe examples/misc/*
+		exeinto /usr/share/doc/${PF}/examples/overlapping_borders
+		doexe examples/overlapping_borders/*
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
