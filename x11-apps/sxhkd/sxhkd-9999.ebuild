@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS=""
 IUSE="examples"
 
+RESTRICT="strip"
+
 RDEPEND=">=x11-libs/libxcb-1.9
 	>=x11-libs/xcb-util-keysyms-0.3.8"
 DEPEND="${RDEPEND}

@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples sres sutils xtitle xdo dzen bar"
 
+RESTRICT="strip"
+
 RDEPEND=">=x11-libs/libxcb-1.9
 	>=x11-libs/xcb-util-0.3.8
 	>=x11-libs/xcb-util-wm-0.3.8
