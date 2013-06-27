@@ -27,5 +27,5 @@ src_install() {
 	dobin ${PN}
 	dodoc LICENSE
 
-	doman ${PN}.1
+	doman doc/${PN}.1
 }

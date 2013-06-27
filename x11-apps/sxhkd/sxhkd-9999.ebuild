@@ -29,7 +29,7 @@ src_install() {
 	dobin ${PN}
 	dodoc LICENSE
 
-	doman ${PN}.1
+	doman doc/${PN}.1
 
 	if use examples ; then
 		exeinto /usr/share/doc/${PF}/examples
