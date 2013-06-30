@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer>
-	  <email>chithanh@gentoo.org</email>
-	  <name>Chí-Thanh Christopher Nguyễn</name>
+	  <email>milomouse@github.com</email>
+	  <name>Vincent ZaGara II</name>
 	</maintainer>
 	<use>
 	  <flag name='examples'>Install examples, usually source code</flag>
