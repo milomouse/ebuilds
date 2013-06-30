@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+	  <email>chithanh@gentoo.org</email>
+	  <name>Chí-Thanh Christopher Nguyễn</name>
+	</maintainer>
+	<use>
+	  <flag name='examples'>Install examples, usually source code</flag>
+	  <flag name='dmenu'>for the example sxhkdrc</flag>
+	  <flag name='interrobang'>an alternative to dmenu</flag>
+	  <flag name='xdo'>for the example sxhkdrc</flag>
+	  <flag name='sutils'>for the example panels</flag>
+	  <flag name='xtitle'>for the example panels</flag>
+	  <flag name='sres'>for the example dzen2 panel</flag>
+	  <flag name='txtw'>for the example dzen2 panel</flag>
+	  <flag name='dzen'>for the example dzen2 panel</flag>
+	  <flag name='bar'>for the example bar panel</flag>
+	</use>
+</pkgmetadata>
