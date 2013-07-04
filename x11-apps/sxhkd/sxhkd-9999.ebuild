@@ -32,8 +32,8 @@ src_install() {
 	doman doc/${PN}.1
 
 	if use examples ; then
-		exeinto /usr/share/doc/${PF}/examples
-		doexe examples/sxhkdrc
+		exeinto /usr/share/doc/${PF}/examples/notification
+		doexe examples/notification/*
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
