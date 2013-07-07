@@ -25,7 +25,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${PN}
+	dobin ${PN} percontation
 	dodoc COPYING
 
 	if use examples ; then
