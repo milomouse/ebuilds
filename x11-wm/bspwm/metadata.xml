@@ -16,5 +16,6 @@
 	  <flag name='txtw'>for the example dzen2 panel</flag>
 	  <flag name='dzen'>for the example dzen2 panel</flag>
 	  <flag name='bar'>for the example bar panel</flag>
+	  <flag name='messages-rewrite'>use the messages-rewrite branch</flag>
 	</use>
 </pkgmetadata>
