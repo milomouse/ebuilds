@@ -8,14 +8,11 @@ DESCRIPTION="A tiling window manager based on binary space partitioning"
 HOMEPAGE="https://github.com/baskerville/bspwm"
 SRC_URI=""
 EGIT_REPO_URI="git://github.com/baskerville/bspwm.git"
-if use messages-rewrite; then
-	EGIT_BRANCH="messages-rewrite"
-fi
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples dmenu interrobang xdo sutils xtitle sres txtw dzen bar messages-rewrite"
+IUSE="examples dmenu interrobang xdo sutils xtitle sres txtw dzen bar"
 
 RESTRICT="strip"
 
@@ -54,8 +51,6 @@ src_install() {
 		doexe examples/panel/*
 		exeinto /usr/share/doc/${PF}/examples/loop
 		doexe examples/loop/*
-		exeinto /usr/share/doc/${PF}/examples/misc
-		doexe examples/misc/*
 		exeinto /usr/share/doc/${PF}/examples/overlapping_borders
 		doexe examples/overlapping_borders/*
 		docompress -x /usr/share/doc/${PF}/examples
