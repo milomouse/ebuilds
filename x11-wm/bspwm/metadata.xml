@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 	  <flag name='examples'>Install examples, usually source code</flag>
+	  <flag name='bash-completion'>Enable bash-completion support</flag>
 	  <flag name='dmenu'>for the example sxhkdrc</flag>
 	  <flag name='interrobang'>an alternative to dmenu</flag>
 	  <flag name='xdo'>for the example sxhkdrc</flag>
