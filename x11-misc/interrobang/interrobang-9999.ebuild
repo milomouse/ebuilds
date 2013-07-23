@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://github.com/TrilbyWhite/interrobang.git"
 LICENSE="GPL3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples"
+IUSE="examples percontation"
 
 RESTRICT="strip"
 
@@ -21,16 +21,25 @@ RDEPEND="${DEPEND}
 	virtual/pkgconfig"
 
 src_compile() {
-	emake PREFIX=/usr
+	if use percontation ; then
+		emake ${PN} percontation PREFIX=/usr
+	else
+		emake ${PN} PREFIX=/usr
+	fi
 }
 
 src_install() {
-	dobin ${PN} percontation
+	dobin ${PN}
+	if use percontation ; then
+		dobin percontation
+	fi
+
 	dodoc COPYING
+	doman interrobang.1
 
 	if use examples ; then
 		exeinto /usr/share/doc/${PF}/examples
-		doexe interrobangrc
+		doexe config
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

@@ -7,5 +7,6 @@
 	</maintainer>
 	<use>
 	  <flag name='examples'>Install examples, usually source code</flag>
+	  <flag name='percontation'>Alternative to compgen for tab default</flag>
 	</use>
 </pkgmetadata>
