@@ -61,7 +61,7 @@ src_prepare() {
 	## GCC:
 	epatch "${DISTDIR}/${GCC_FILE}"
 
-	## PREEPT_RT:
+	## PREEMPT_RT:
 	sed -ri "s|-rt${RT_VERS}|-${RT_VERS}|g" "${WORKDIR}/${RT_NAME}"
 	sed -ri "s|localversion-rt|localversion-${K_NAME}|g" "${WORKDIR}/${RT_NAME}"
 	epatch "${WORKDIR}/${RT_NAME}"
