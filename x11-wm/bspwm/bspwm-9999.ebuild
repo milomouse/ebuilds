@@ -42,8 +42,8 @@ src_install() {
 	dodoc LICENSE
 
 	if use bash-completion ; then
-		dodir /usr/share/bash-completion/
-		insinto /usr/share/bash-completion/
+		dodir /usr/share/bash-completion/completions/
+		insinto /usr/share/bash-completion/completions/
 		newins "${S}"/bash_completion bspc
 	fi
 
