@@ -31,7 +31,7 @@ GCC_FILE="kernel-${KV_MAJOR}${KV_MINOR}-gcc48-1.patch"
 GCC_LINK="https://raw.github.com/graysky2/kernel_gcc_patch/master/${GCC_FILE}"
 ## loop-AES:
 LA_VERS="3.6i"
-LA_DIFF="kernel-3.10.diff"
+LA_DIFF="kernel-${K_BRANCH_ID}.diff"
 LA_NAME="loop-AES-v${LA_VERS}"
 LA_FILE="${LA_NAME}.tar.bz2"
 LA_LINK="http://downloads.sourceforge.net/project/loop-aes/loop-aes/v${LA_VERS}/${LA_FILE}"
