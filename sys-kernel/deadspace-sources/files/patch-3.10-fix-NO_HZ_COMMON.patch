@@ -1,0 +1,22 @@
+diff --git a/kernel/softirq.c b/kernel/softirq.c
+index db2fe2b..d0f189d 100644
+--- a/kernel/softirq.c
++++ b/kernel/softirq.c
+@@ -64,7 +64,7 @@ char *softirq_to_name[NR_SOFTIRQS] = {
+ 	"TASKLET", "SCHED", "HRTIMER", "RCU"
+ };
+ 
+-#ifdef CONFIG_NO_HZ
++#ifdef CONFIG_NO_HZ_COMMON
+ # ifdef CONFIG_PREEMPT_RT_FULL
+ 
+ struct softirq_runner {
+@@ -151,7 +151,7 @@ void softirq_check_pending_idle(void)
+ }
+ # endif
+ 
+-#else /* !NO_HZ */
++#else /* !NO_HZ_COMMON */
+ static inline void softirq_set_runner(unsigned int sirq) { }
+ static inline void softirq_clr_runner(unsigned int sirq) { }
+ #endif
