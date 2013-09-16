@@ -25,12 +25,11 @@ RT_VERS="${PV/*_p}"
 RT_NAME="patch-${K_BRANCH_ID}.${KV_PATCH}-rt${RT_VERS}.patch"
 RT_FILE="${RT_NAME}.xz"
 RT_LINK="https://www.kernel.org/pub/linux/kernel/projects/rt/${K_BRANCH_ID}/older/${RT_FILE}"
-HZ_NAME="patch-${K_BRANCH_ID}-fix-NO_HZ_COMMON.patch"
 ## GCC:
 GCC_FILE="kernel-${KV_MAJOR}${KV_MINOR}-gcc48-1.patch"
 GCC_LINK="https://raw.github.com/graysky2/kernel_gcc_patch/master/${GCC_FILE}"
 ## loop-AES:
-LA_VERS="3.6i"
+LA_VERS="3.7a"
 LA_DIFF="kernel-${K_BRANCH_ID}.diff"
 LA_NAME="loop-AES-v${LA_VERS}"
 LA_FILE="${LA_NAME}.tar.bz2"
@@ -68,7 +67,6 @@ src_prepare() {
 	sed -ri "s|-rt${RT_VERS}|-${RT_VERS}|g" "${WORKDIR}/${RT_NAME}"
 	sed -ri "s|localversion-rt|localversion-${K_NAME}|g" "${WORKDIR}/${RT_NAME}"
 	epatch "${WORKDIR}/${RT_NAME}"
-	epatch "${FILESDIR}/${HZ_NAME}"
 
 	## loop-AES:
 	rm -v "${S}/drivers/block/loop.c" "${S}/include/linux/loop.h"
