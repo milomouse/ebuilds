@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://github.com/baskerville/bspwm.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples bash-completion zsh-completion dmenu interrobang xdo sutils xtitle sres txtw dzen bar"
+IUSE="examples bash-completion zsh-completion dmenu interrobang xdo sutils xtitle xwinfo sres txtw dzen bar"
 
 RESTRICT="strip"
 
@@ -27,6 +27,7 @@ RDEPEND=">=x11-libs/libxcb-1.9
 	xdo? ( =x11-misc/xdo-9999 )
 	sutils? ( =x11-apps/sutils-9999 )
 	xtitle? ( =x11-apps/xtitle-9999 )
+	xwinfo? ( =x11-apps/xwinfo-9999 )
 	sres? ( =x11-apps/sres-9999 )
 	txtw? ( =x11-misc/txtw-9999 )
 	dzen? ( x11-misc/dzen )
