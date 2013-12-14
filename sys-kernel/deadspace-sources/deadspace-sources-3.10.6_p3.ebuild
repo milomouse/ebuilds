@@ -26,7 +26,7 @@ RT_NAME="patch-${K_BRANCH_ID}.${KV_PATCH}-rt${RT_VERS}.patch"
 RT_FILE="${RT_NAME}.xz"
 RT_LINK="https://www.kernel.org/pub/linux/kernel/projects/rt/${K_BRANCH_ID}/older/${RT_FILE}"
 ## GCC:
-GCC_FILE="kernel-${KV_MAJOR}${KV_MINOR}-gcc48-1.patch"
+GCC_FILE="enable_additional_cpu_optimizations_for_gcc.patch"
 GCC_LINK="https://raw.github.com/graysky2/kernel_gcc_patch/master/${GCC_FILE}"
 ## loop-AES:
 LA_VERS="3.6i"
