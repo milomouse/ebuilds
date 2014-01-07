@@ -35,7 +35,7 @@ src_install() {
 	fi
 
 	dodoc COPYING
-	doman interrobang.1
+	doman ${PN}.1
 
 	if use examples ; then
 		exeinto /usr/share/doc/${PF}/examples
