@@ -1,4 +1,6 @@
-# $Header: $
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $ bspwm-9999
 
 EAPI=5
 
@@ -36,11 +38,16 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_compile() {
+
 	emake PREFIX=/usr
+
 }
 
 src_install() {
+
 	emake PREFIX="/usr" DESTDIR="${D}" install
+	make_session_desktop bspwm /usr/bin/bspwm
+
 	dodoc LICENSE
 
 	if use bash-completion ; then
@@ -62,4 +69,5 @@ src_install() {
 		cp -R "${S}"/contrib/* "${D}"/usr/share/doc/"${PF}"/contrib/
 		docompress -x /usr/share/doc/${PF}/
 	fi
+
 }

@@ -1,4 +1,6 @@
-# $Header: $
+# Copyright 1999-2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $ dzen-9999
 
 inherit flag-o-matic git-2 toolchain-funcs
 
