@@ -1,0 +1,102 @@
+diff --git a/input.lisp b/input.lisp
+index 9b3dcd9..34808a8 100644
+--- a/input.lisp
++++ b/input.lisp
+@@ -26,6 +26,7 @@
+ 
+ (export '(*input-history-ignore-duplicates*
+           *input-map*
++	  *input-completion-type*
+ 	  completing-read
+ 	  input-delete-region
+ 	  input-goto-char
+@@ -377,19 +378,82 @@ functions are passed this structure as their first argument."
+ 
+ ;;; "interactive" input functions
+ 
+-(defun input-find-completions (str completions)
+-  (if (or (functionp completions)
+-          (and (symbolp completions)
+-               (fboundp completions)))
+-      (funcall completions str)
+-      (remove-if-not (lambda (elt)
++(defun fuzzy-match (short full)
++  (declare (optimize (speed 3) (safety 0) (space 0))
++	   (simple-string short full))
++  (labels ((word-separator-p (c)
++	     (or (eq c #\-) (eq c #\Space)))
++	   (%distance (short s0 s full f0 f)
++	     (let ((d 0) (gap f0) (i s0))
++	       (declare (fixnum s0 s f0 f d gap i))
++	       (loop for j from f0 to f
++		     for cf = (aref full j)
++		     for cs = (aref short i) do
++		    (if (eq cf cs)
++			(setf d (+ d (- j gap))
++			      gap (1+ j)
++			      i (1+ i))
++			(incf d))
++		    (when (eq i s)
++		      (return-from %distance (+ d (- f j 1)))))
++	       d))
++	   (distance (short full)
++	     (let ((chunks NIL) (s0 0) (s 0) (f0 0) (f 0))
++	       (declare (fixnum s0 s f0 f)
++			(dynamic-extent chunks))
++	       (loop for i from 0 to (1- (length full))
++		     for c = (aref full i) do
++		    (if (word-separator-p c)
++			(progn 
++			  (push (list s0 s f0 f) chunks)
++			  (when (and (< s (length short))
++				     (word-separator-p (aref short s)))
++			    (incf s))
++			  (setf s0 s f0 (1+ i) f (1+ i)))
++			(progn 
++			  (when (and (< s (length short))
++				     (eq c (aref short s)))
++			    (incf s))
++			  (incf f))))
++	       (push (list s0 s f0 f) chunks)
++	       (when (eq s (length short))
++		 (loop for (s0 s f0 f) in chunks
++		       for factor from (length chunks) downto 1
++		       sum (* factor (%distance short s0 s full f0 f)))))))
++    (let ((d (distance short full)))
++      (when d (cons full d)))))
++
++(defun input-find-completions/fuzzy (str completions)
++  (let* ((str (string-downcase str))
++	 (completions (mapcar 'string-downcase completions))
++	 (matches (remove-if-not
++		   'identity
++		   (loop for candidate in completions 
++		         collect (fuzzy-match str candidate)))))
++    (mapcar 'car (sort matches '< :key 'cdr))))
++
++(defun input-find-completions/prefix (str completions)
++  (remove-if-not (lambda (elt)
+                        (when (listp elt)
+                          (setf elt (car elt)))
+                        (and (<= (length str) (length elt))
+                             (string= str elt
+                                      :end1 (length str)
+                                      :end2 (length str))))
+-                     completions)))
++		 completions))
++
++(defvar *input-completion-type* :prefix)
++
++(defun input-find-completions (str completions)
++  (if (or (functionp completions)
++          (and (symbolp completions)
++               (fboundp completions)))
++      (funcall completions str)
++      (let* ((method-name (format nil "input-find-completions/~A" *input-completion-type*))
++	     (method (find-symbol (string-upcase method-name) :stumpwm)))
++	(if method 
++	    (funcall method str completions)
++	    (message "Invalid *input-completion-type* (:~A)" *input-completion-type*)))))
+ 
+ (defun input-complete (input direction)
+   ;; reset the completion list if this is the first time they're

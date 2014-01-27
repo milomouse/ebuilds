@@ -1,0 +1,22 @@
+--- events.lisp	2010-12-31 18:07:12.336000000 +0100
++++ events.lisp.new	2010-12-31 18:09:16.416999983 +0100
+@@ -126,8 +126,7 @@
+              (if new-heads
+                  (progn
+                    (scale-screen screen new-heads)
+-                   (mapc 'group-sync-all-heads (screen-groups screen))
+-                   (update-mode-lines screen))
++                   (mapc 'group-sync-all-heads (screen-groups screen)))
+                  (dformat 1 "Invalid configuration! ~S~%" new-heads)))))))))
+ 
+ (define-stump-event-handler :map-request (parent send-event-p window)
+@@ -583,8 +582,7 @@
+   (when (and window (eq mode :normal) (eq *mouse-focus-policy* :sloppy))
+     (let ((win (find-window window)))
+       (when (and win (find win (top-windows)))
+-        (focus-all win)
+-        (update-all-mode-lines)))))
++        (focus-all win)))))
+ 
+ (define-stump-event-handler :button-press (window code x y child time)
+   ;; Pass click to client

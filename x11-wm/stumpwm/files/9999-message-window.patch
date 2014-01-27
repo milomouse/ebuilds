@@ -1,0 +1,42 @@
+--- message-window.lisp	2010-08-03 18:04:19.288999990 +0200
++++ message-window.lisp.new	2010-08-03 18:08:10.112999990 +0200
+@@ -145,30 +145,7 @@
+ 
+ (defun show-frame-indicator (group &optional force)
+   (show-frame-outline group)
+-  ;; FIXME: Arg, these tests are already done in show-frame-outline
+-  (when (find group (mapcar 'screen-current-group *screen-list*))
+-    (when (or force
+-              (and (or (> (length (tile-group-frame-tree group)) 1)
+-                       (not (atom (first (tile-group-frame-tree group)))))
+-                   (not *suppress-frame-indicator*)))
+-      (let ((frame (tile-group-current-frame group))
+-            (w (screen-frame-window (current-screen)))
+-            (string (if (stringp *frame-indicator-text*)
+-                        *frame-indicator-text*
+-                        (prin1-to-string *frame-indicator-text*)))
+-            (font (screen-font (current-screen))))
+-        ;; If it's already mapped it'll appear briefly in the wrong
+-        ;; place, so unmap it first.
+-        (xlib:unmap-window w)
+-        (xlib:with-state (w)
+-          (setf (xlib:drawable-x w) (+ (frame-x frame)
+-                                       (truncate (- (frame-width frame) (xlib:text-width font string)) 2))
+-                (xlib:drawable-y w) (+ (frame-display-y group frame)
+-                                       (truncate (- (frame-height frame) (font-height font)) 2))
+-                (xlib:window-priority w) :above))
+-        (xlib:map-window w)
+-        (echo-in-window w font (screen-fg-color (current-screen)) (screen-bg-color (current-screen)) string)
+-        (reset-frame-indicator-timer)))))
++)
+ 
+ (defun echo-in-window (win font fg bg string)
+   (let* ((height (font-height font))
+@@ -231,7 +208,6 @@
+ (defun echo-string (screen msg)
+   "Display @var{string} in the message bar on @var{screen}. You almost always want to use @command{message}."
+   (echo-string-list screen (split-string msg (string #\Newline))))
+-
+ (defun message (fmt &rest args)
+   "run FMT and ARGS through `format' and echo the result to the current screen."
+   (echo-string (current-screen) (apply 'format nil fmt args)))

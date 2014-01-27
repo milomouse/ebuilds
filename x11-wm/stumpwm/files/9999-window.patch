@@ -1,0 +1,12 @@
+--- window.lisp	2010-09-16 17:26:08.126999999 +0200
++++ window.lisp.new	2010-09-16 18:00:37.848000052 +0200
+@@ -846,7 +846,8 @@
+ request sent to the window. The window's client may decide not to
+ grant the request or may not be able to if it is unresponsive."
+   (when window
+-    (send-client-message window :WM_PROTOCOLS (xlib:intern-atom *display* :WM_DELETE_WINDOW))))
++   (if (not (deny-request-p window *deny-quit-request*))
++   (send-client-message window :WM_PROTOCOLS (xlib:intern-atom *display* :WM_DELETE_WINDOW)))))
+ 
+ (defcommand-alias delete delete-window)
+ 

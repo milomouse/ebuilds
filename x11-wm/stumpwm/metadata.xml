@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+	  <email>milomouse@github.com</email>
+	  <name>Vincent ZaGara II</name>
+	</maintainer>
+	<use>
+	  <flag name='source'>Install source code</flag>
+	  <flag name='contrib'>Install contributed lisp code</flag>
+	  <flag name='sbcl'>Use SBCL as Lisp Implementation</flag>
+	  <flag name='clisp'>Use CLISP as Lisp Implementation</flag>
+	  <flag name='stumpish'>Install interactive shell script</flag>
+	  <flag name='emacs'>Install emacs files</flag>
+	</use>
+</pkgmetadata>
