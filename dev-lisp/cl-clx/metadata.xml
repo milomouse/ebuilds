@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+	  <email>milomouse@github.com</email>
+	  <name>Vincent ZaGara II</name>
+	</maintainer>
+<herd>common-lisp</herd>
+<longdescription>
+CL-CLX is the standard X Window System client library for Common Lisp,
+equivalent to the Xlib library for the C Programming Language.
+CLX is written solely in Common Lisp; it does not use Xlib.
+
+CLX contains data types, functions and macros to interact with an X
+server by sending requests and receiving events and replies.
+</longdescription>
+</pkgmetadata>
