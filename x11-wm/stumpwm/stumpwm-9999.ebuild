@@ -76,6 +76,7 @@ src_install() {
 	make_session_desktop StumpWM /usr/bin/${PN}
 
 	cp "${FILESDIR}"/README.Gentoo . && sed -i "s:@VERSION@:${PV}:" README.Gentoo
+	[[ -f README.md && ! -f README ]] && mv README.md README
 	dodoc NEWS README README.Gentoo
 	use doc && doinfo ${PN}.info
 	docinto examples ; dodoc sample-stumpwmrc.lisp
