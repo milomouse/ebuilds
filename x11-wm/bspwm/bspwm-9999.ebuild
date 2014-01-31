@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit flag-o-matic git-2 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic git-2 toolchain-funcs
 
 DESCRIPTION="A tiling window manager based on binary space partitioning"
 HOMEPAGE="https://github.com/baskerville/bspwm"
@@ -51,9 +51,7 @@ src_install() {
 	dodoc LICENSE
 
 	if use bash-completion ; then
-		dodir /usr/share/bash-completion/completions/
-		insinto /usr/share/bash-completion/completions/
-		newins "${S}"/contrib/bash_completion bspc
+		newbashcomp contrib/bash_completion bspc
 	fi
 
 	if use zsh-completion ; then
