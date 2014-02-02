@@ -77,7 +77,7 @@ src_install() {
 
 	cp "${FILESDIR}"/README.Gentoo . && sed -i "s:@VERSION@:${PV}:" README.Gentoo
 	[[ -f README.md && ! -f README ]] && mv README.md README
-	dodoc COPYING NEWS README README.Gentoo
+	nonfatal dodoc COPYING NEWS README README.Gentoo
 	use doc && doinfo ${PN}.info
 	docinto examples ; dodoc sample-stumpwmrc.lisp
 
