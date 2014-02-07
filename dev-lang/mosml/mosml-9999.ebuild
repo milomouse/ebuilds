@@ -35,14 +35,14 @@ src_compile() {
 
 	cd src
 	emake CC=$(tc-getCC) CPP="$(tc-getCPP) -P -traditional -Dunix -Umsdos" \
-		PREFIX="${EPREFIX}"/usr world || die
+		PREFIX="${EPREFIX}"/usr world || die "Compile failed"
 
 }
 
 src_install() {
 
 	cd src
-	emake PREFIX="${ED}"/usr install || die
-	dodoc  ../README || die
+	emake PREFIX="${ED}"/usr install || die "Install failed"
+	nonfatal dodoc  ../README
 
 }
