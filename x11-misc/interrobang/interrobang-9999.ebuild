@@ -11,7 +11,7 @@ HOMEPAGE="http://github.com/TrilbyWhite/interrobang.git"
 SRC_URI=""
 EGIT_REPO_URI="git://github.com/TrilbyWhite/interrobang.git"
 
-LICENSE="GPL3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples percontation"
