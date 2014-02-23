@@ -8,9 +8,8 @@ KEYWORDS="~amd64"
 
 inherit versionator
 
-CKV="$(get_version_component_range 1-3)"
 K_SECURITY_UNSUPPORTED="yes"
-K_DEBLOB_AVAILABLE="1"
+K_DEBLOB_AVAILABLE="0"
 
 inherit kernel-2
 detect_version
