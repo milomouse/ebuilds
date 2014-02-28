@@ -11,17 +11,16 @@ SRC_URI="${HOMEPAGE}/${PN}-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="dietlibc"
+IUSE="dietlibc minimal"
 
 RESTRICT="strip"
 
-DEPEND="
-	!dietlibc? ( sys-libs/glibc )
+DEPEND="!dietlibc? ( sys-libs/glibc )
 	dietlibc? ( dev-libs/dietlibc )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -i "s/^CFLAGS = .*/CFLAGS = $CFLAGS/" Makefile
+	sed -i -e "s/^CFLAGS = .*/CFLAGS = $CFLAGS/" -e 's/$(P) //g' Makefile
 }
 
 src_compile() {
@@ -34,6 +33,12 @@ src_compile() {
 
 src_install() {
 	sed -i 's/-g utmp/-g root/' Makefile
-	emake DESTDIR="${D}" install install_other
-	dodoc COPYING sample.Conf
+
+	if use minimal ; then
+		emake DESTDIR="${ED}" install
+	else
+		emake DESTDIR="${ED}" install install_other
+	fi
+
+	dodoc COPYING README*
 }
