@@ -22,7 +22,7 @@ K_BRANCH_ID="${KV_MAJOR}.${KV_MINOR}"
 ## PREEMPT_RT:
 RT_VERS="${PV/*_p}"
 RT_NAME="patch-${K_BRANCH_ID}.${KV_PATCH}-rt${RT_VERS}.patch"
-RT_FILE="${RT_NAME}.xz"
+RT_FILE="${RT_NAME}.bz2"
 RT_LINK="https://www.kernel.org/pub/linux/kernel/projects/rt/${K_BRANCH_ID}/${RT_FILE}"
 ## GCC:
 GCC_FILE="enable_additional_cpu_optimizations_for_gcc.patch"
