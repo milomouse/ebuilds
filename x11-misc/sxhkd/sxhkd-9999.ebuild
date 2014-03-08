@@ -6,12 +6,12 @@ EAPI=5
 
 inherit flag-o-matic git-2 toolchain-funcs
 
-DESCRIPTION="A simple X hotkey daemon"
+DESCRIPTION="Simple X hotkey daemon"
 HOMEPAGE="https://github.com/baskerville/sxhkd"
 SRC_URI=""
 EGIT_REPO_URI="git://github.com/baskerville/sxhkd.git"
 
-LICENSE="BSD"
+LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="examples"
