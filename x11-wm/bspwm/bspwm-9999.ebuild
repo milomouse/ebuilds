@@ -21,7 +21,7 @@ RESTRICT="strip"
 RDEPEND=">=x11-libs/libxcb-1.9
 	>=x11-libs/xcb-util-0.3.8
 	>=x11-libs/xcb-util-wm-0.3.8
-	>=x11-apps/sxhkd-0.3
+	>=x11-misc/sxhkd-0.3
 	bash-completion? ( app-shells/bash-completion )
 	zsh-completion? ( app-shells/zsh-completion )
 	dmenu? ( x11-misc/dmenu )
