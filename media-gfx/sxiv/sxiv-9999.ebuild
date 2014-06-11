@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-libs/giflib
 	media-libs/imlib2[X]
+	media-libs/libexif
 	x11-libs/libX11"
 DEPEND="${RDEPEND}"
 
